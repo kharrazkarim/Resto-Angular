@@ -34,6 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { from } from 'rxjs';
+import {MatSliderModule} from '@angular/material/slider';
+
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { from } from 'rxjs';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
 
   ],
   providers: [DishService,PromotionService,LeaderService],
