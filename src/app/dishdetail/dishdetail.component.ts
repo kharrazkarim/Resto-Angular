@@ -8,7 +8,7 @@ import { PARAMETERS } from '@angular/core/src/util/decorators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Comment} from '../shared/comment';
 import { MatSliderChange } from '@angular/material';
- 
+  
 
 @Component({
   selector: 'app-dishdetail',
@@ -38,6 +38,7 @@ export class DishdetailComponent implements OnInit {
     'rating':   {'required': 'Rating is required'},
     'comment':   {'required': 'Comment is required'}
   };
+  errMess: String;
 
 
   constructor(private dishService: DishService,
@@ -56,7 +57,8 @@ export class DishdetailComponent implements OnInit {
     this.dishService.getDishIds().subscribe((dishIds)=>this.dishIds=dishIds );
     this.route.params.pipe(switchMap((params:Params)=> this.dishService.getDish(params['id'])))
     .subscribe(dish => {this.dish = dish;
-                        this.setPrevNext(dish.id);})
+                        this.setPrevNext(dish.id);},
+                        errmess => this.errMess= <any> errmess)
   }
 
   setPrevNext(dishId: string){
