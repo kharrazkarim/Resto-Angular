@@ -15,7 +15,7 @@
       <h4>{{errMess}}</h4>
     </div>
     
-    <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
+    <div fxFlex="40" *ngIf="dish" [@visibility]="visibility"  [@expand]>
       <mat-card>
         <mat-card-header>
           <mat-card-title>
@@ -47,7 +47,7 @@
       </div>
   
   
-<div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
+<div fxFlex="40" *ngIf="dish" [@visibility]="visibility"  [@expand]>
     <div fxLayout="row"  
     fxLayout.sm="column"
     fxLayout.xs="column"
