@@ -42,7 +42,7 @@ export class DishService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.put<Dish>(baseURL+ 'dishes/'+ dish.id,dish,httpOptions).pipe(catchError(this.ProcessHTTPMsgService.handleError));
+    return this.http.put<Dish>(baseURL+ 'dishes/'+ dish.id,dish,httpOptions).pipe(catchError(this.ProcessHTTPMsgService.handleError)).pipe(delay(1000000));
   }
 
   

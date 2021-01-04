@@ -37,13 +37,34 @@
   </div>
 
 
+  <div fxFlex fxFlexOffset="20px" class="form-size" [hidden]="!issubmitting"  [@expand] >
+    <h4>Submitting Form </h4>
+    <mat-spinner></mat-spinner>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
+  <div fxFlex  *ngIf="feedback" [@expand]>
+    <mat-list >
+      <h3>Your Submission</h3>
+      <mat-list-item >
+      <h1 matLine> First Name: {{feedback.firstname}} </h1>
+      <h1 matLine>Last Name: {{feedback.lastname}}   </h1>
+      <h1 matLine> Tel.Number: {{feedback.telnum}}  </h1>   
+      <h1 matLine> Email: {{feedback.email}}  </h1>   
+      <h1 matLine> Contact You?: {{feedback.agree}}  </h1>  
+      <h1 matLine> How?: {{feedback.contacttype}}  </h1>   
+      <h1 matLine> Feedback: {{feedback.message}}  </h1>   
+    </mat-list-item>
+  </mat-list>
+    </div>
+
   <!-- Reactive Form -->
 
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" [hidden]="feedback || issubmitting ||errMess" [@visibility]="visibility"  [@expand]>
     <h3> Send us your FeedBack</h3>
-    <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
-
-    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
@@ -96,5 +117,8 @@
     <button type="submit" mat-button class="background-primary text-floral-white"
     [disabled]="feedbackForm.invalid">Submit</button> 
 </form>
+
+
+
  </div>
  
